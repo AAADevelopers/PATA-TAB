@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<!-- Load the Paper.js library -->
+<script type="text/javascript" src="assets/js/lib/paper-full.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/1.1.28/howler.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="assets/css/circules.css">
+<!-- Define inlined PaperScript associate it with myCanvas -->
+<script type="text/paperscript" canvas="myCanvas">
+var keydata = {
+		a: {
+		   color:"yellow",
+		   sound:new Howl({
+		   urls:['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/bubbles.mp3']
+		   })
+		  },
+		  b: {
+		   color:"white",
+		   sound:new Howl({
+		   urls:['sounds/b.mp3']
+		   })
+		  },
+        c: {
+		   color:"blue",
+		   sound:new Howl({
+		   urls:['sounds/c.mp3']
+		   })
+		  },
+		  d: {
+		   color:"purple",
+		   sound:new Howl({
+		   urls:['sounds/d.mp3']
+		   })
+		  },
+		  e: {
+		   color:"blue",
+		   sound:new Howl({
+		   urls:['sounds/e.mp3']
+		   })
+		  },
+		  f: {
+		   color:"purple",
+		   sound:new Howl({
+		   urls:['sounds/f.mp3']
+		   })
+		  },
+		  g: {
+		   color:"yellow",
+		   sound:new Howl({
+		   urls:['sounds/g.mp3']
+		   })
+		  },
+		  h: {
+		   color:"blue",
+		   sound:new Howl({
+		   urls:['sounds/h.mp3']
+		   })
+		  },
+		  i: {
+		   color:"yellow",
+		   sound:new Howl({
+		   urls:['sounds/i.mp3']
+		   })
+		  },
+		  j: {
+		   color:"purple",
+		   sound:new Howl({
+		   urls:['sounds/j.mp3']
+		   })
+		  },
+		  k: {
+		   color:"red",
+		   sound:new Howl({
+		   urls:['sounds/k.mp3']
+		   })
+		  },
+		  l: {
+		   color:"white",
+		   sound:new Howl({
+		   urls:['sounds/l.mp3']
+		   })
+		  },
+		  m: {
+		   color:"red",
+		   sound:new Howl({
+		   urls:['sounds/m.mp3']
+		   })
+		  },
+		  n: {
+		   color:"white",
+		   sound:new Howl({
+		   urls:['sounds/n.mp3']
+		   })
+		  },
+		  o: {
+		   color:"yellow",
+		   sound:new Howl({
+		   urls:['sounds/o.mp3']
+		   })
+		  },
+		  p: {
+		   color:"white",
+		   sound:new Howl({
+		   urls:['sounds/p.mp3']
+		   })
+		  },
+		  q: {
+		   color:"red",
+		   sound:new Howl({
+		   urls:['sounds/q.mp3']
+		   })
+		  },
+		  r: {
+		   color:"purple",
+		   sound:new Howl({
+		   urls:['sounds/r.mp3']
+		   })
+		  },
+		  s: {
+		   color:"yellow",
+		   sound:new Howl({
+		   urls:['sounds/s.mp3']
+		   })
+		  },
+		  t: {
+		   color:"purple",
+		   sound:new Howl({
+		   urls:['sounds/t.mp3']
+		   })
+		  },
+		  u: {
+		   color:"red",
+		   sound:new Howl({
+		   urls:['sounds/u.mp3']
+		   })
+		  },
+		  v: {
+		   color:"purple",
+		   sound:new Howl({
+		   urls:['sounds/v.mp3']
+		   })
+		  },
+		  w: {
+		   color:"red",
+		   sound:new Howl({
+		   urls:['sounds/w.mp3']
+		   })
+		  },
+		  x: {
+		   color:"white",
+		   sound:new Howl({
+		   urls:['sounds/x.mp3']
+		   })
+		  },
+		  y: {
+		   color:"red",
+		   sound:new Howl({
+		   urls:['sounds/y.mp3']
+		   })
+		  },
+		  z: {
+		   color:"white",
+		   sound:new Howl({
+		   urls:['sounds/z.mp3']
+		   })
+		  }
+		  }
+    var circles=[];
+    function onKeyDown(event) {
+        if(keydata[event.key]){
+            var maxpoint = new Point(view.size.width, view.size.height);
+	        var randompoint = Point.random();
+	        var point = maxpoint * randompoint;
+	        var myCircle = new Path.Circle(point, 500);
+	        myCircle.fillColor = keydata[event.key].color;
+            keydata[event.key].sound.play();
+            circles.push(myCircle);
+
+        }        
+    }   
+
+    function onFrame(event){
+        for(i=0;i< circles.length; i++){
+           circles[i].fillColor.hue +=1;
+           circles[i].scale(0.9);
+        }
+    }              
+		   
+</script>
+</head>
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top margin ">
+ <div class="container">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand active" href="../home.html">Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li ><a href="../ColorGame/ColorGame.html">Color Game <span class="sr-only">(current)</span></a></li>
+        <li ><a href="../todo/todolist.html">To-Do List <span class="sr-only">(current)</span></a></li>
+        
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="../AboutUs/AboutUs.html"> About Us</a></li>
+       <li ><a href="../ContactUs/contactus.html"> Contact Us <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span><span class="sr-only">(current)</span></a></li> 
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	<canvas id="myCanvas" resize></canvas>
+
+
+<script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+<script type="text/javascript" src="assets/js/lib/bootstrap.js"></script>
+
+</body>
+</html>
